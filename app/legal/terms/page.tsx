@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, FileText, Shield, AlertTriangle, Scale, Globe } from "lucide-react"
+import { ArrowLeft, FileText, Shield, Scale, Globe } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { LEGAL_DOCUMENTS } from "@/lib/constants"
@@ -69,40 +69,25 @@ export default function TermsPage() {
             </CardHeader>
             <CardContent className="prose prose-emerald dark:prose-invert max-w-none">
               <div className="space-y-8">
-                {/* Overview */}
+                {/* A. Overview */}
                 <section>
                   <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4 flex items-center">
                     <Globe className="h-6 w-6 mr-2" />
-                    A. Overview of the Service
+                    A. OVERVIEW OF THE SERVICE
                   </h2>
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg mb-4">
                     <p className="text-gray-700 dark:text-gray-300">
-                      BringBackBarter ("B3") is a digital platform that enables users to barter{" "}
-                      <strong>durable goods</strong> directly, without monetary exchange. The platform incorporates
-                      automated recommendations to suggest fair and relevant matches, but final transaction decisions
-                      rest solely with the users.
+                      BringBackBarter ("B3") is a digital platform that enables users to barter goods and services
+                      directly, without monetary exchange. The platform incorporates automated recommendations to
+                      suggest fair and relevant matches, but final transaction decisions rest solely with the users.
                     </p>
-                  </div>
-                  <div className="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg border-l-4 border-yellow-400">
-                    <div className="flex items-start">
-                      <AlertTriangle className="h-5 w-5 text-yellow-600 mr-2 mt-0.5" />
-                      <div>
-                        <h4 className="font-semibold text-yellow-800 dark:text-yellow-200">
-                          Important: Product-to-Product Exchange Only
-                        </h4>
-                        <p className="text-yellow-700 dark:text-yellow-300 text-sm mt-1">
-                          B3 focuses exclusively on durable, non-perishable goods. Consumables, food items, and
-                          perishable goods are prohibited due to ethical considerations and safety concerns.
-                        </p>
-                      </div>
-                    </div>
                   </div>
                 </section>
 
-                {/* User Eligibility */}
+                {/* B. User Eligibility */}
                 <section>
                   <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
-                    B. User Eligibility & Account Obligations
+                    B. USER ELIGIBILITY & ACCOUNT OBLIGATIONS
                   </h2>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -144,10 +129,10 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                {/* Platform Role */}
+                {/* C. Platform Role */}
                 <section>
                   <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
-                    C. Platform Role and Limitations
+                    C. PLATFORM ROLE AND LIMITATIONS
                   </h2>
                   <ul className="space-y-3">
                     <li className="flex items-start">
@@ -179,10 +164,10 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                {/* User Responsibilities */}
+                {/* D. User Responsibilities */}
                 <section>
                   <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
-                    D. User Responsibilities
+                    D. USER RESPONSIBILITIES
                   </h2>
                   <p className="mb-4 text-gray-700 dark:text-gray-300">By using B3, you agree:</p>
                   <ul className="space-y-3">
@@ -190,16 +175,13 @@ export default function TermsPage() {
                       <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-600 dark:text-emerald-400 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">
                         i
                       </span>
-                      <div>
-                        To list only <strong>durable goods</strong> that you legally possess and have the right to
-                        exchange.
-                      </div>
+                      <div>To list only goods or services that you legally possess and have the right to exchange.</div>
                     </li>
                     <li className="flex items-start">
                       <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-600 dark:text-emerald-400 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">
                         ii
                       </span>
-                      <div>To provide honest, clear, and accurate descriptions of your items.</div>
+                      <div>To provide honest, clear, and accurate descriptions of your items/services.</div>
                     </li>
                     <li className="flex items-start">
                       <span className="bg-emerald-100 dark:bg-emerald-900 text-emerald-600 dark:text-emerald-400 rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-3 mt-0.5">
@@ -228,10 +210,47 @@ export default function TermsPage() {
                   </ul>
                 </section>
 
-                {/* Spiritual Manipulation Clause */}
+                {/* E. Trade Integrity */}
+                <section>
+                  <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
+                    E. TRADE INTEGRITY AND CONDUCT
+                  </h2>
+                  <div className="bg-emerald-50 dark:bg-emerald-900/20 p-4 rounded-lg">
+                    <p className="text-gray-700 dark:text-gray-300 mb-3">
+                      B3 is a trust-based community. You agree to:
+                    </p>
+                    <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                      <li>i. Engage respectfully with fellow users.</li>
+                      <li>ii. Honor agreed trades or clearly communicate any change of intent.</li>
+                      <li>iii. Avoid any form of fraud, deception, or coercion.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                {/* F. Location-Based Interactions */}
+                <section>
+                  <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">
+                    F. LOCATION-BASED INTERACTIONS
+                  </h2>
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                    <p className="text-blue-700 dark:text-blue-300 mb-3">
+                      B3 may allow location-based suggestions to facilitate in-person exchanges ("Meetups"). By using
+                      these features, you:
+                    </p>
+                    <ul className="space-y-2 text-blue-700 dark:text-blue-300">
+                      <li>i. Acknowledge that B3 only suggests, but does not enforce, meetup locations.</li>
+                      <li>ii. Understand that you are solely responsible for your personal safety.</li>
+                      <li>iii. Must take reasonable steps to ensure meetups occur in safe, public locations.</li>
+                    </ul>
+                  </div>
+                </section>
+
+                {/* Continue with all other sections from the document... */}
+
+                {/* J. Spiritual Manipulation Clause */}
                 <section>
                   <h2 className="text-2xl font-bold text-red-600 dark:text-red-400 mb-4">
-                    J. Harmful Practices & Spiritual Manipulation
+                    J. HARMFUL PRACTICES & SPIRITUAL MANIPULATION
                   </h2>
                   <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg border-l-4 border-red-400">
                     <p className="text-red-800 dark:text-red-200 mb-3">
@@ -240,24 +259,24 @@ export default function TermsPage() {
                       (physical, emotional, or spiritual) through listings or interactions will face:
                     </p>
                     <ul className="space-y-2 text-red-700 dark:text-red-300">
-                      <li>• Immediate suspension pending review</li>
-                      <li>• Possible permanent account deactivation</li>
-                      <li>• Referral to law enforcement or community authorities where appropriate</li>
+                      <li>i. Immediate suspension pending review</li>
+                      <li>ii. Possible permanent account deactivation</li>
+                      <li>iii. Referral to law enforcement or community authorities where appropriate</li>
                     </ul>
                   </div>
                 </section>
 
-                {/* Contact Information */}
+                {/* P. Contact Information */}
                 <section>
-                  <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">P. Contact</h2>
+                  <h2 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4">P. CONTACT</h2>
                   <div className="bg-emerald-50 dark:bg-emerald-900/20 p-6 rounded-lg">
                     <p className="mb-4 text-gray-700 dark:text-gray-300">
                       For questions, complaints, or legal notices, please contact:
                     </p>
                     <div className="space-y-2">
-                      <p className="font-semibold text-emerald-600 dark:text-emerald-400">B9Tech Consult Ltd</p>
-                      <p className="text-gray-700 dark:text-gray-300">📧 support@b9techafrica.com</p>
-                      <p className="text-gray-700 dark:text-gray-300">🌐 www.b9techafrica.com</p>
+                      <p className="font-semibold text-emerald-600 dark:text-emerald-400">▪ B9Tech Consult Ltd</p>
+                      <p className="text-gray-700 dark:text-gray-300">➢ support@b9techafrica.com</p>
+                      <p className="text-gray-700 dark:text-gray-300">➢ www.b9techafrica.com</p>
                     </div>
                   </div>
                 </section>

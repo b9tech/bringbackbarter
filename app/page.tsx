@@ -54,7 +54,7 @@ const useCases = [
     description:
       "Kemi from Victoria Island trades her iPhone 14 Pro for a 2022 MacBook Air M2 from a tech entrepreneur in Lekki",
     icon: Smartphone,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/success-story-1.png",
     location: "Lagos State",
     category: "Electronics → Electronics",
     value: "₦650,000 worth",
@@ -66,7 +66,7 @@ const useCases = [
     description:
       "Adunni swaps her authentic Gucci and Louis Vuitton collection for a complete PS5 setup with 4K TV and gaming chair",
     icon: ShoppingBag,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/success-story-2.png",
     location: "FCT Abuja",
     category: "Fashion → Gaming",
     value: "₦480,000 worth",
@@ -78,12 +78,352 @@ const useCases = [
     description:
       "Emeka trades his professional Canon EOS R6 camera kit for MacBook Pro, iPad Pro, and Apple Watch Ultra",
     icon: Camera,
-    image: "/placeholder.svg?height=400&width=600",
+    image: "/images/canon-camera.jpg", // Changed from success-story-3.png to actual camera image
     location: "Rivers State",
     category: "Photography → Tech Bundle",
     value: "₦720,000 worth",
     gradient: "from-emerald-500 to-teal-500",
     naija_phrase: "Correct barter! 📸🍎",
+  },
+]
+
+// Enhanced sample featured items with proper images
+const sampleFeaturedItems = [
+  {
+    id: "1",
+    title: "iPhone 14 Pro Max 256GB",
+    description:
+      "Pristine condition iPhone 14 Pro Max in Deep Purple. Original box, charger, and accessories included. No scratches or dents.",
+    category: "Electronics",
+    subcategory: "Smartphones",
+    condition: "Like New",
+    estimated_value: 650000,
+    currency: "NGN",
+    images: ["/images/iphone-14-pro.jpg"],
+    location: "Victoria Island",
+    state: "Lagos",
+    is_available: true,
+    is_featured: true,
+    views_count: 234,
+    interested_count: 12,
+    status: "active",
+    user: {
+      id: "user1",
+      full_name: "Kemi Adebayo",
+      is_verified: true,
+      trust_score: 95,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "2",
+    title: "MacBook Air M2 13-inch",
+    description:
+      "2022 MacBook Air with M2 chip, 8GB RAM, 256GB SSD. Midnight color. Excellent performance for work and creativity.",
+    category: "Electronics",
+    subcategory: "Laptops",
+    condition: "Brand New",
+    estimated_value: 720000,
+    currency: "NGN",
+    images: ["/images/macbook-air-m2.jpg"],
+    location: "Lekki",
+    state: "Lagos",
+    is_available: true,
+    is_featured: true,
+    views_count: 189,
+    interested_count: 8,
+    status: "active",
+    user: {
+      id: "user2",
+      full_name: "Tunde Okafor",
+      is_verified: true,
+      trust_score: 88,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "3",
+    title: "PlayStation 5 Console Bundle",
+    description:
+      "PS5 console with extra DualSense controller, charging station, and 3 games: Spider-Man, FIFA 24, and Call of Duty.",
+    category: "Gaming",
+    subcategory: "Consoles",
+    condition: "Like New",
+    estimated_value: 450000,
+    currency: "NGN",
+    images: ["/images/ps5-console.jpg"],
+    location: "Wuse II",
+    state: "FCT",
+    is_available: true,
+    is_featured: true,
+    views_count: 156,
+    interested_count: 15,
+    status: "active",
+    user: {
+      id: "user3",
+      full_name: "Emeka Nwankwo",
+      is_verified: true,
+      trust_score: 92,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "4",
+    title: "Canon EOS R6 Camera Kit",
+    description:
+      "Professional camera kit with 24-105mm lens, extra battery, 64GB memory card, and camera bag. Perfect for photography business.",
+    category: "Photography",
+    subcategory: "Cameras",
+    condition: "Like New",
+    estimated_value: 850000,
+    currency: "NGN",
+    images: ["/images/canon-camera.jpg"],
+    location: "GRA",
+    state: "Rivers",
+    is_available: true,
+    is_featured: true,
+    views_count: 98,
+    interested_count: 6,
+    status: "active",
+    user: {
+      id: "user4",
+      full_name: "Fatima Aliyu",
+      is_verified: true,
+      trust_score: 90,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "5",
+    title: "Designer Handbag Collection",
+    description:
+      "Authentic Louis Vuitton and Gucci handbags. 3 pieces total - all with certificates of authenticity. Excellent condition.",
+    category: "Fashion",
+    subcategory: "Bags",
+    condition: "Like New",
+    estimated_value: 380000,
+    currency: "NGN",
+    images: ["/images/designer-bags.jpg"],
+    location: "Maitama",
+    state: "FCT",
+    is_available: true,
+    is_featured: true,
+    views_count: 167,
+    interested_count: 9,
+    status: "active",
+    user: {
+      id: "user5",
+      full_name: "Adunni Okafor",
+      is_verified: true,
+      trust_score: 94,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "6",
+    title: "Gaming Setup Complete",
+    description:
+      "Complete gaming setup: 4K monitor, gaming chair, mechanical keyboard, gaming mouse, and RGB lighting. Ready to dominate!",
+    category: "Gaming",
+    subcategory: "Accessories",
+    condition: "Brand New",
+    estimated_value: 320000,
+    currency: "NGN",
+    images: ["/images/gaming-setup.jpg"],
+    location: "Ikeja",
+    state: "Lagos",
+    is_available: true,
+    is_featured: true,
+    views_count: 203,
+    interested_count: 11,
+    status: "active",
+    user: {
+      id: "user6",
+      full_name: "Chidi Okonkwo",
+      is_verified: true,
+      trust_score: 87,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "7",
+    title: "iPhone 13 Pro 128GB",
+    description:
+      "Excellent condition iPhone 13 Pro in Sierra Blue. Battery health 89%. Comes with original box and Lightning cable.",
+    category: "Electronics",
+    subcategory: "Smartphones",
+    condition: "Good",
+    estimated_value: 520000,
+    currency: "NGN",
+    images: ["/images/items/iphone-13-pro.jpg"],
+    location: "Surulere",
+    state: "Lagos",
+    is_available: true,
+    is_featured: false,
+    views_count: 145,
+    interested_count: 7,
+    status: "active",
+    user: {
+      id: "user7",
+      full_name: "Bola Adeyemi",
+      is_verified: true,
+      trust_score: 91,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "8",
+    title: "Samsung Galaxy S23 Ultra",
+    description:
+      "Brand new Samsung Galaxy S23 Ultra 256GB in Phantom Black. Still sealed in box with full warranty. Latest flagship model.",
+    category: "Electronics",
+    subcategory: "Smartphones",
+    condition: "Brand New",
+    estimated_value: 680000,
+    currency: "NGN",
+    images: ["/images/items/samsung-galaxy-s23.jpg"],
+    location: "Garki",
+    state: "FCT",
+    is_available: true,
+    is_featured: false,
+    views_count: 198,
+    interested_count: 14,
+    status: "active",
+    user: {
+      id: "user8",
+      full_name: "Ahmed Musa",
+      is_verified: true,
+      trust_score: 93,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "9",
+    title: "MacBook Pro M1 14-inch",
+    description:
+      "2021 MacBook Pro with M1 Pro chip, 16GB RAM, 512GB SSD. Space Gray. Perfect for video editing and development work.",
+    category: "Electronics",
+    subcategory: "Laptops",
+    condition: "Like New",
+    estimated_value: 950000,
+    currency: "NGN",
+    images: ["/images/items/macbook-pro-m1.jpg"],
+    location: "Ikoyi",
+    state: "Lagos",
+    is_available: true,
+    is_featured: false,
+    views_count: 176,
+    interested_count: 9,
+    status: "active",
+    user: {
+      id: "user9",
+      full_name: "Chioma Okwu",
+      is_verified: true,
+      trust_score: 96,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "10",
+    title: "Dell XPS 13 Laptop",
+    description:
+      "Dell XPS 13 with Intel i7, 16GB RAM, 512GB SSD. Ultrabook perfect for business and travel. Excellent build quality.",
+    category: "Electronics",
+    subcategory: "Laptops",
+    condition: "Good",
+    estimated_value: 420000,
+    currency: "NGN",
+    images: ["/images/items/dell-xps-laptop.jpg"],
+    location: "Kaduna",
+    state: "Kaduna",
+    is_available: true,
+    is_featured: false,
+    views_count: 132,
+    interested_count: 5,
+    status: "active",
+    user: {
+      id: "user10",
+      full_name: "Ibrahim Sani",
+      is_verified: true,
+      trust_score: 89,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "11",
+    title: "Xbox Series X Console",
+    description:
+      "Microsoft Xbox Series X with 1TB storage. Includes wireless controller and HDMI cable. Perfect for 4K gaming.",
+    category: "Gaming",
+    subcategory: "Consoles",
+    condition: "Like New",
+    estimated_value: 380000,
+    currency: "NGN",
+    images: ["/images/items/xbox-series-x.jpg"],
+    location: "Port Harcourt",
+    state: "Rivers",
+    is_available: true,
+    is_featured: false,
+    views_count: 164,
+    interested_count: 11,
+    status: "active",
+    user: {
+      id: "user11",
+      full_name: "Victor Eze",
+      is_verified: true,
+      trust_score: 88,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
+  },
+  {
+    id: "12",
+    title: "Nike Air Jordan 1 Retro",
+    description:
+      "Authentic Nike Air Jordan 1 Retro High OG in Chicago colorway. Size 42. Worn only twice, excellent condition.",
+    category: "Fashion",
+    subcategory: "Footwear",
+    condition: "Like New",
+    estimated_value: 85000,
+    currency: "NGN",
+    images: ["/images/items/nike-sneakers.jpg"],
+    location: "Ibadan",
+    state: "Oyo",
+    is_available: true,
+    is_featured: false,
+    views_count: 89,
+    interested_count: 6,
+    status: "active",
+    user: {
+      id: "user12",
+      full_name: "Seun Adebayo",
+      is_verified: true,
+      trust_score: 85,
+      avatar_url: "/placeholder-user.jpg",
+    },
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString(),
   },
 ]
 
@@ -237,8 +577,11 @@ export default function HomePage() {
 
   const loadFeaturedItems = async () => {
     const result = await getItems({ limit: 6 })
-    if (result.success && result.data) {
+    if (result.success && result.data && result.data.length > 0) {
       setFeaturedItems(result.data)
+    } else {
+      // Use sample data for demonstration - show first 6 items
+      setFeaturedItems(sampleFeaturedItems.slice(0, 6))
     }
   }
 
@@ -648,6 +991,134 @@ export default function HomePage() {
             We focus on product-to-product exchanges. Consumables and perishable items are not permitted.
           </p>
         </motion.div>
+      </section>
+
+      {/* How It Works Section */}
+      <section id="how-it-works" className="container mx-auto px-4 py-20">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+            🧩 How{" "}
+            <span className="bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+              B3 Works
+            </span>
+            <span className="text-2xl"> 🇳🇬</span>
+          </h2>
+          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Barter Made Easy for Nigerians - Step-by-Step Breakdown
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          {[
+            {
+              step: "1",
+              title: "Create Account",
+              description: "Sign up as a 'Barter Warrior' with email and location",
+              icon: "👤",
+              color: "from-blue-500 to-cyan-500",
+            },
+            {
+              step: "2",
+              title: "List What You Have",
+              description: "Post durable goods with photos and descriptions",
+              icon: "📦",
+              color: "from-green-500 to-emerald-500",
+            },
+            {
+              step: "3",
+              title: "Smart Match",
+              description: "Get AI recommendations or browse manually",
+              icon: "🎯",
+              color: "from-purple-500 to-pink-500",
+            },
+            {
+              step: "4",
+              title: "Complete Trade",
+              description: "Chat, meet safely, exchange, and rate each other",
+              icon: "🤝",
+              color: "from-orange-500 to-red-500",
+            },
+          ].map((step, index) => (
+            <motion.div
+              key={step.step}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="text-center"
+            >
+              <div
+                className={`w-20 h-20 rounded-full bg-gradient-to-r ${step.color} flex items-center justify-center mx-auto mb-4 shadow-lg`}
+              >
+                <span className="text-2xl">{step.icon}</span>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                <div className="text-3xl font-bold text-emerald-600 mb-2">Step {step.step}</div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{step.title}</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{step.description}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl p-8">
+          <h3 className="text-2xl font-bold text-emerald-600 dark:text-emerald-400 mb-4 text-center">
+            ✅ What Makes It Work
+          </h3>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <span className="text-emerald-600">📍</span>
+                <span className="text-gray-700 dark:text-gray-300">
+                  <strong>Geo-filtering:</strong> See people near you
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-emerald-600">🛡️</span>
+                <span className="text-gray-700 dark:text-gray-300">
+                  <strong>Trust-based:</strong> Community ratings + verified users
+                </span>
+              </div>
+            </div>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-3">
+                <span className="text-emerald-600">💚</span>
+                <span className="text-gray-700 dark:text-gray-300">
+                  <strong>No money:</strong> Just value-for-value exchange
+                </span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <span className="text-emerald-600">🎯</span>
+                <span className="text-gray-700 dark:text-gray-300">
+                  <strong>Your control:</strong> No AI decisions for you
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 text-center">
+          <h4 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Sample Trade Examples</h4>
+          <div className="grid md:grid-cols-3 gap-4">
+            {[
+              { offer: "Working gas stove", want: "Used smartphone" },
+              { offer: "2 pairs of sneakers", want: "Electric iron" },
+              { offer: "Bag of cement", want: "Set of ceiling fans" },
+            ].map((trade, index) => (
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-4 shadow-md">
+                <div className="text-sm text-gray-600 dark:text-gray-400">You Offer</div>
+                <div className="font-semibold text-gray-900 dark:text-white">{trade.offer}</div>
+                <div className="text-emerald-600 text-xl my-2">↔️</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">You Want</div>
+                <div className="font-semibold text-gray-900 dark:text-white">{trade.want}</div>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
       {/* Featured Items Section */}

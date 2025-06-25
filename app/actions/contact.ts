@@ -40,16 +40,31 @@ export async function joinWaitlist(formData: FormData) {
   }
 
   try {
-    const { data, error } = await supabase.from("waitlist").insert([waitlistData]).select().single()
+    // Use UPSERT so duplicates (same email) are ignored gracefully.
+    // `ignoreDuplicates: true` performs `ON CONFLICT DO NOTHING`.
+    const { data, error } = await supabase.from("waitlist").upsert([waitlistData], {
+      onConflict: "email",
+      ignoreDuplicates: true,
+      // Returning all columns if a new row was inserted; may be empty when ignored
+      returning: "representation",
+    })
 
+    // If a duplicate was ignored, `data` will be empty.
     if (error) {
-      console.error("Error joining waitlist:", error)
-      return { success: false, error: error.message }
+      throw error
     }
 
-    return { success: true, data }
-  } catch (error) {
-    console.error("Unexpected error:", error)
+    return {
+      success: true,
+      data: data?.[0] ?? waitlistData, // fallback so the caller still gets something useful
+      message:
+        data?.length === 0
+          ? "You're already on the waitlist — thanks for your interest!"
+          : "Successfully joined the waitlist!",
+    }
+  } catch (error: any) {
+    // Any other unexpected error
+    console.error("Error joining waitlist:", error)
     return { success: false, error: "Failed to join waitlist" }
   }
 }
