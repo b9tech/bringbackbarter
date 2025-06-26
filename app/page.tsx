@@ -279,7 +279,6 @@ const sampleFeaturedItems = [
       id: "user7",
       full_name: "Bola Adeyemi",
       is_verified: true,
-      trust_score: 91,
       avatar_url: "/placeholder-user.jpg",
     },
     created_at: new Date().toISOString(),
@@ -363,7 +362,6 @@ const sampleFeaturedItems = [
       id: "user10",
       full_name: "Ibrahim Sani",
       is_verified: true,
-      trust_score: 89,
       avatar_url: "/placeholder-user.jpg",
     },
     created_at: new Date().toISOString(),
@@ -391,7 +389,6 @@ const sampleFeaturedItems = [
       id: "user11",
       full_name: "Victor Eze",
       is_verified: true,
-      trust_score: 88,
       avatar_url: "/placeholder-user.jpg",
     },
     created_at: new Date().toISOString(),
@@ -419,7 +416,6 @@ const sampleFeaturedItems = [
       id: "user12",
       full_name: "Seun Adebayo",
       is_verified: true,
-      trust_score: 85,
       avatar_url: "/placeholder-user.jpg",
     },
     created_at: new Date().toISOString(),
@@ -708,6 +704,8 @@ export default function HomePage() {
                   key={item}
                   onClick={() => {
                     if (item === "Contact") setShowContactForm(true)
+                    else if (item === "Browse Items") window.location.href = "/browse"
+                    else if (item === "About Us") window.location.href = "/about"
                     else
                       document
                         .getElementById(item.toLowerCase().replace(" ", "-"))
@@ -795,6 +793,8 @@ export default function HomePage() {
                       key={item}
                       onClick={() => {
                         if (item === "Contact") setShowContactForm(true)
+                        else if (item === "Browse Items") window.location.href = "/browse"
+                        else if (item === "About Us") window.location.href = "/about"
                         setMobileMenuOpen(false)
                       }}
                       className="text-gray-600 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors font-medium text-left"
@@ -1828,7 +1828,7 @@ export default function HomePage() {
                   { name: "About Us", href: "/about" },
                   { name: "How It Works", href: "#how-it-works" },
                   { name: "Browse Items", href: "/browse" },
-                  { name: "Categories", href: "/categories" },
+                  { name: "Categories", href: "/browse" },
                 ],
               },
               {

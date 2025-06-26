@@ -39,7 +39,7 @@ export const NIGERIAN_STATES = [
   "Zamfara",
 ]
 
-// Updated Product Categories - DURABLE GOODS ONLY (No Consumables)
+// STRICTLY DURABLE GOODS ONLY - NO CONSUMABLES
 export const PRODUCT_CATEGORIES = [
   {
     name: "Electronics & Gadgets",
@@ -53,6 +53,11 @@ export const PRODUCT_CATEGORIES = [
       "Cameras",
       "TVs",
       "Audio Systems",
+      "Power Banks",
+      "Speakers",
+      "Keyboards",
+      "Mice",
+      "Monitors",
     ],
     description: "Durable electronic devices and gadgets",
     icon: "📱",
@@ -68,6 +73,8 @@ export const PRODUCT_CATEGORIES = [
       "Sunglasses",
       "Belts",
       "Scarves",
+      "Hats",
+      "Wallets",
     ],
     description: "Quality fashion items and accessories",
     icon: "👜",
@@ -82,13 +89,26 @@ export const PRODUCT_CATEGORIES = [
       "Bedding",
       "Storage Solutions",
       "Lighting",
+      "Rugs & Carpets",
+      "Curtains",
+      "Mirrors",
     ],
     description: "Durable home goods and furniture",
     icon: "🏠",
   },
   {
     name: "Books & Media",
-    subcategories: ["Books", "DVDs", "Vinyl Records", "Magazines", "Comics", "Educational Materials", "Art Prints"],
+    subcategories: [
+      "Books",
+      "DVDs",
+      "Vinyl Records",
+      "Magazines",
+      "Comics",
+      "Educational Materials",
+      "Art Prints",
+      "Board Games",
+      "Puzzles",
+    ],
     description: "Educational and entertainment media",
     icon: "📚",
   },
@@ -101,6 +121,8 @@ export const PRODUCT_CATEGORIES = [
       "Bicycles",
       "Fitness Accessories",
       "Camping Gear",
+      "Sports Shoes",
+      "Gym Equipment",
     ],
     description: "Sports and fitness equipment",
     icon: "⚽",
@@ -114,6 +136,8 @@ export const PRODUCT_CATEGORIES = [
       "Collectibles",
       "Antiques",
       "Handmade Items",
+      "Pottery",
+      "Sculptures",
     ],
     description: "Creative and artistic items",
     icon: "🎨",
@@ -127,32 +151,58 @@ export const PRODUCT_CATEGORIES = [
       "Professional Equipment",
       "Machinery",
       "Workshop Tools",
+      "Measuring Tools",
+      "Safety Equipment",
     ],
     description: "Professional and DIY tools",
     icon: "🔧",
   },
   {
     name: "Automotive & Transport",
-    subcategories: ["Car Accessories", "Motorcycle Parts", "Bicycle Parts", "Tools", "Electronics", "Safety Equipment"],
+    subcategories: [
+      "Car Accessories",
+      "Motorcycle Parts",
+      "Bicycle Parts",
+      "Tools",
+      "Electronics",
+      "Safety Equipment",
+      "Car Care Products",
+      "Navigation Systems",
+    ],
     description: "Vehicle parts and accessories",
     icon: "🚗",
   },
 ]
 
-// Prohibited Items - Consumables and Restricted Goods
+// STRICTLY PROHIBITED - ALL CONSUMABLES AND RESTRICTED GOODS
 export const PROHIBITED_ITEMS = [
+  // CONSUMABLES (STRICTLY FORBIDDEN)
   "Food items and consumables",
   "Beverages and drinks",
   "Perishable goods",
+  "Fresh produce",
+  "Cooked meals",
+  "Snacks and confectionery",
+  "Dairy products",
+  "Meat and poultry",
+  "Seafood",
+  "Spices and seasonings",
+
+  // RESTRICTED GOODS
   "Medications and drugs",
   "Alcohol and tobacco",
   "Weapons and ammunition",
   "Adult content",
   "Live animals",
+  "Plants and seeds",
   "Hazardous materials",
   "Counterfeit goods",
   "Stolen items",
   "Items requiring special licenses",
+  "Personal hygiene products",
+  "Cosmetics and beauty products",
+  "Cleaning supplies",
+  "Chemicals",
 ]
 
 export const ITEM_CONDITIONS = ["Brand New", "Like New", "Excellent", "Good", "Fair", "Needs Repair"]

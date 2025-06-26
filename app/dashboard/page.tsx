@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import {
   Plus,
   MessageCircle,
@@ -28,152 +29,257 @@ import {
   CheckCircle,
   AlertCircle,
   X,
+  Eye,
+  Heart,
+  Edit,
+  Trash2,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
+import { NIGERIAN_STATES, PRODUCT_CATEGORIES } from "@/lib/constants"
 
-const myItems = [
+// Real Nigerian products for the dashboard
+const realMyItems = [
   {
     id: 1,
-    title: "Fresh Tomatoes (10kg)",
-    description: "Farm fresh tomatoes from Ogun State. Perfect for cooking and sauce making.",
-    category: "Food",
-    location: "Ikeja, Lagos",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "iPhone 13 Pro 128GB Sierra Blue",
+    description:
+      "Excellent condition iPhone 13 Pro. Battery health 89%. Original box, charger, and screen protector included. Perfect for photography and business use.",
+    category: "Electronics & Gadgets",
+    subcategory: "Smartphones",
+    condition: "Excellent",
+    location: "Victoria Island, Lagos",
+    image: "/images/items/iphone-13-pro.jpg",
     status: "Active",
-    value: "₦4,500",
-    views: 23,
-    interested: 5,
+    value: "₦520,000",
+    views: 156,
+    interested: 8,
+    datePosted: "2 days ago",
   },
   {
     id: 2,
-    title: "Samsung Galaxy A54 (Used)",
-    description: "6 months old, excellent condition with original charger and box",
-    category: "Electronics",
-    location: "Garki, Abuja",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "MacBook Pro M1 14-inch Space Gray",
+    description:
+      "2021 MacBook Pro with M1 Pro chip, 16GB RAM, 512GB SSD. Perfect for video editing and development. Barely used, still under warranty.",
+    category: "Electronics & Gadgets",
+    subcategory: "Laptops",
+    condition: "Like New",
+    location: "Lekki, Lagos",
+    image: "/images/items/macbook-pro-m1.jpg",
     status: "Matched",
-    value: "₦85,000",
-    views: 45,
-    interested: 12,
+    value: "₦950,000",
+    views: 203,
+    interested: 15,
+    datePosted: "1 week ago",
   },
   {
     id: 3,
-    title: "Handwoven Ankara Bags (5 pieces)",
-    description: "Beautiful handmade bags perfect for market or office use",
-    category: "Fashion",
-    location: "Bodija, Ibadan",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "Canon EOS R6 Camera Kit",
+    description:
+      "Professional camera kit with 24-105mm lens, extra battery, 64GB memory card, and camera bag. Perfect for photography business.",
+    category: "Electronics & Gadgets",
+    subcategory: "Cameras",
+    condition: "Like New",
+    location: "Ikeja, Lagos",
+    image: "/images/canon-camera.jpg",
     status: "Active",
-    value: "₦12,000",
-    views: 18,
-    interested: 3,
+    value: "₦850,000",
+    views: 89,
+    interested: 6,
+    datePosted: "3 days ago",
+  },
+  {
+    id: 4,
+    title: "PlayStation 5 Console + Games",
+    description:
+      "PS5 console with 2 controllers, charging station, and 4 games including Spider-Man and FIFA 24. Adult-owned, excellent condition.",
+    category: "Electronics & Gadgets",
+    subcategory: "Gaming Consoles",
+    condition: "Like New",
+    location: "Surulere, Lagos",
+    image: "/images/ps5-console.jpg",
+    status: "Active",
+    value: "₦450,000",
+    views: 178,
+    interested: 12,
+    datePosted: "5 days ago",
+  },
+  {
+    id: 5,
+    title: "Designer Handbag Collection",
+    description:
+      "Authentic Louis Vuitton and Gucci handbags. 3 pieces with certificates of authenticity. Excellent condition, barely used.",
+    category: "Fashion & Accessories",
+    subcategory: "Bags & Purses",
+    condition: "Like New",
+    location: "Ikoyi, Lagos",
+    image: "/images/designer-bags.jpg",
+    status: "Pending",
+    value: "₦380,000",
+    views: 134,
+    interested: 9,
+    datePosted: "1 day ago",
+  },
+  {
+    id: 6,
+    title: "Apple Watch Series 8 45mm",
+    description:
+      "Apple Watch Series 8 in Midnight Aluminum with Sport Band. GPS + Cellular model. Excellent condition with original charger.",
+    category: "Electronics & Gadgets",
+    subcategory: "Smart Watches",
+    condition: "Excellent",
+    location: "Victoria Island, Lagos",
+    image: "/images/items/apple-watch.jpg",
+    status: "Active",
+    value: "₦180,000",
+    views: 67,
+    interested: 4,
+    datePosted: "4 days ago",
   },
 ]
 
-const matches = [
+const realMatches = [
   {
     id: 1,
-    title: "MTN Airtime ₦5,000",
-    description: "Looking for fresh vegetables for my restaurant",
-    user: "Adunni K.",
-    location: "Ikeja, Lagos",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "Samsung Galaxy S23 Ultra 256GB",
+    description:
+      "Brand new Samsung Galaxy S23 Ultra in Phantom Black. Looking for iPhone 13 Pro or similar Apple device.",
+    user: "Ahmed Musa",
+    location: "Garki, Abuja",
+    image: "/images/items/samsung-galaxy-s23.jpg",
     compatibility: 95,
     userRating: 4.8,
     lastSeen: "2 hours ago",
     responseTime: "Usually responds in 30 mins",
+    interestedIn: "iPhone 13 Pro",
   },
   {
     id: 2,
-    title: "Baby Items Bundle",
-    description: "Need phone for my business. Baby clothes, diapers, feeding bottles",
-    user: "Emeka N.",
-    location: "Garki, Abuja",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "Dell XPS 13 Laptop + Accessories",
+    description: "Dell XPS 13 with Intel i7, 16GB RAM, 512GB SSD. Looking for MacBook Pro for my design work.",
+    user: "Chioma Okwu",
+    location: "Enugu, Enugu",
+    image: "/images/items/dell-xps-laptop.jpg",
     compatibility: 88,
     userRating: 4.9,
     lastSeen: "1 hour ago",
     responseTime: "Usually responds in 1 hour",
+    interestedIn: "MacBook Pro M1",
   },
   {
     id: 3,
-    title: "Rice & Beans (2 bags each)",
-    description: "Looking for beautiful bags for my boutique",
-    user: "Fatima A.",
-    location: "Bodija, Ibadan",
-    image: "/placeholder.svg?height=150&width=200",
+    title: "Professional Photography Equipment",
+    description: "Nikon D850 with multiple lenses and accessories. Interested in Canon equipment for brand switch.",
+    user: "Ibrahim Sani",
+    location: "Kaduna, Kaduna",
+    image: "/images/items/nikon-camera.jpg",
     compatibility: 92,
     userRating: 4.7,
     lastSeen: "30 mins ago",
     responseTime: "Usually responds in 15 mins",
+    interestedIn: "Canon EOS R6",
+  },
+  {
+    id: 4,
+    title: "Xbox Series X + Game Pass",
+    description: "Xbox Series X with Game Pass Ultimate and 5 games. Looking for PlayStation 5 to switch ecosystems.",
+    user: "Victor Eze",
+    location: "Port Harcourt, Rivers",
+    image: "/images/items/xbox-series-x.jpg",
+    compatibility: 89,
+    userRating: 4.6,
+    lastSeen: "45 mins ago",
+    responseTime: "Usually responds in 2 hours",
+    interestedIn: "PlayStation 5",
   },
 ]
 
-const trades = [
+const realTrades = [
   {
     id: 1,
-    item: "Fresh Tomatoes (5kg)",
-    partner: "Adunni K.",
-    partnerItem: "MTN Airtime ₦2,500",
+    item: "iPhone 12 Pro 256GB",
+    partner: "Adunni Okafor",
+    partnerItem: "Samsung Galaxy S22 Ultra + ₦50k",
     status: "Completed",
-    date: "2 days ago",
+    date: "3 days ago",
     rating: 5,
-    location: "Ikeja, Lagos",
+    location: "Victoria Island, Lagos",
+    feedback: "Smooth transaction! Phone was exactly as described. Highly recommended trader!",
   },
   {
     id: 2,
-    item: "Samsung Galaxy A54",
-    partner: "Emeka N.",
-    partnerItem: "Baby Items Bundle",
+    item: "MacBook Air M1",
+    partner: "Emeka Nwankwo",
+    partnerItem: "Gaming Setup (Monitor + Accessories)",
     status: "In Progress",
     date: "Today",
     rating: null,
-    location: "Garki, Abuja",
-    nextStep: "Meet at agreed location",
+    location: "Lekki, Lagos",
+    nextStep: "Meet at Lekki Phase 1 tomorrow at 3 PM",
   },
   {
     id: 3,
-    item: "Ankara Bags (2 pieces)",
-    partner: "Fatima A.",
-    partnerItem: "Rice & Beans (1 bag each)",
+    item: "Canon DSLR Camera",
+    partner: "Fatima Aliyu",
+    partnerItem: "iPad Pro + Apple Pencil",
     status: "Pending",
-    date: "1 hour ago",
+    date: "2 hours ago",
     rating: null,
-    location: "Bodija, Ibadan",
+    location: "Ikeja, Lagos",
     nextStep: "Waiting for partner confirmation",
+  },
+  {
+    id: 4,
+    item: "Designer Watch Collection",
+    partner: "Bola Adeyemi",
+    partnerItem: "Professional Camera Equipment",
+    status: "Completed",
+    date: "1 week ago",
+    rating: 4,
+    location: "Surulere, Lagos",
+    feedback: "Good trade overall. Items were as described but delivery was slightly delayed.",
   },
 ]
 
 const chatMessages = [
   {
     id: 1,
-    sender: "Adunni K.",
-    message: "Hello! I'm interested in your tomatoes. Are they still fresh?",
+    sender: "Ahmed Musa",
+    message: "Hello! I'm interested in your iPhone 13 Pro. My Samsung Galaxy S23 Ultra is brand new, still sealed.",
     time: "2:30 PM",
     isMe: false,
+    avatar: "/placeholder-user.jpg",
   },
   {
     id: 2,
     sender: "You",
-    message: "Yes, they are very fresh! Harvested yesterday from my farm in Ogun State.",
+    message: "Hi Ahmed! That sounds like a great trade. Can you send me some photos of the S23 Ultra?",
     time: "2:32 PM",
     isMe: true,
   },
   {
     id: 3,
-    sender: "Adunni K.",
-    message: "Perfect! I can offer ₦5,000 MTN airtime for 10kg. When can we meet?",
+    sender: "Ahmed Musa",
+    message: "I'll send photos now. When would be a good time to meet? I'm in Abuja but can travel to Lagos.",
     time: "2:35 PM",
     isMe: false,
+    avatar: "/placeholder-user.jpg",
   },
   {
     id: 4,
     sender: "You",
-    message: "That sounds good! I can meet at Ikeja City Mall tomorrow at 3 PM.",
+    message: "Perfect! How about this weekend at Ikeja City Mall? It's a safe public location.",
     time: "2:37 PM",
     isMe: true,
+  },
+  {
+    id: 5,
+    sender: "Ahmed Musa",
+    message: "That works perfectly! Saturday at 2 PM? I'll bring the phone, charger, and all accessories.",
+    time: "2:40 PM",
+    isMe: false,
+    avatar: "/placeholder-user.jpg",
   },
 ]
 
@@ -183,13 +289,55 @@ export default function Dashboard() {
   const [selectedChat, setSelectedChat] = useState(null)
   const [newMessage, setNewMessage] = useState("")
   const [mounted, setMounted] = useState(false)
+  const [newItemData, setNewItemData] = useState({
+    title: "",
+    description: "",
+    category: "",
+    subcategory: "",
+    condition: "",
+    estimatedValue: "",
+    location: "",
+    state: "",
+  })
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
+  const handleAddItem = (e: React.FormEvent) => {
+    e.preventDefault()
+    // Here you would typically call an API to add the item
+    alert("Item added successfully! 🎉")
+    setShowAddItem(false)
+    setNewItemData({
+      title: "",
+      description: "",
+      category: "",
+      subcategory: "",
+      condition: "",
+      estimatedValue: "",
+      location: "",
+      state: "",
+    })
+  }
+
+  const handleSendMessage = () => {
+    if (newMessage.trim()) {
+      // Here you would typically send the message via API
+      alert(`Message sent: "${newMessage}"`)
+      setNewMessage("")
+    }
+  }
+
   if (!mounted) {
-    return null
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-yellow-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-emerald-600 mx-auto mb-4"></div>
+          <p className="text-emerald-600 font-semibold">Loading your Barter Dashboard... 🚀</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -218,8 +366,14 @@ export default function Dashboard() {
             </div>
             <div className="flex items-center space-x-3">
               <Badge className="bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200 animate-pulse">
-                3 New Matches
+                {realMatches.length} New Matches
               </Badge>
+              <Link href="/browse">
+                <Button variant="outline" className="bg-white text-emerald-600 border-emerald-200 hover:bg-emerald-50">
+                  <Search className="h-4 w-4 mr-2" />
+                  Browse Items
+                </Button>
+              </Link>
               <Button
                 className="bg-emerald-600 hover:bg-emerald-700 text-white hover:scale-105 transition-all duration-200 shadow-lg"
                 onClick={() => setShowAddItem(true)}
@@ -240,10 +394,10 @@ export default function Dashboard() {
           className="flex flex-wrap gap-2 mb-8"
         >
           {[
-            { id: "items", label: "My Items", icon: Package, count: myItems.length },
-            { id: "matches", label: "My Matches", icon: Search, count: matches.length },
+            { id: "items", label: "My Items", icon: Package, count: realMyItems.length },
+            { id: "matches", label: "My Matches", icon: Search, count: realMatches.length },
             { id: "chat", label: "Chat", icon: MessageCircle, count: 2 },
-            { id: "trades", label: "Trades", icon: Handshake, count: trades.length },
+            { id: "trades", label: "Trades", icon: Handshake, count: realTrades.length },
           ].map((tab) => (
             <motion.div key={tab.id} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Button
@@ -303,82 +457,149 @@ export default function Dashboard() {
                           Add New Item
                         </CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                          <div className="space-y-2">
-                            <Label htmlFor="title" className="text-gray-700 dark:text-gray-300">
-                              Item Title
-                            </Label>
-                            <Input
-                              id="title"
-                              placeholder="e.g., Fresh Tomatoes (5kg)"
-                              className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
-                            />
+                      <CardContent>
+                        <form onSubmit={handleAddItem} className="space-y-4">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-2">
+                              <Label htmlFor="title" className="text-gray-700 dark:text-gray-300">
+                                Item Title *
+                              </Label>
+                              <Input
+                                id="title"
+                                placeholder="e.g., iPhone 14 Pro Max 256GB"
+                                value={newItemData.title}
+                                onChange={(e) => setNewItemData({ ...newItemData, title: e.target.value })}
+                                className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
+                                required
+                              />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="category" className="text-gray-700 dark:text-gray-300">
+                                Category *
+                              </Label>
+                              <Select
+                                value={newItemData.category}
+                                onValueChange={(value) => setNewItemData({ ...newItemData, category: value })}
+                              >
+                                <SelectTrigger className="bg-white dark:bg-gray-700">
+                                  <SelectValue placeholder="Select category" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {PRODUCT_CATEGORIES.map((category) => (
+                                    <SelectItem key={category.name} value={category.name}>
+                                      {category.icon} {category.name}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="category" className="text-gray-700 dark:text-gray-300">
-                              Category
+                            <Label htmlFor="description" className="text-gray-700 dark:text-gray-300">
+                              Description *
                             </Label>
-                            <Input
-                              id="category"
-                              placeholder="e.g., Food, Electronics, Fashion"
+                            <Textarea
+                              id="description"
+                              placeholder="Describe your item in detail... condition, accessories included, etc."
+                              value={newItemData.description}
+                              onChange={(e) => setNewItemData({ ...newItemData, description: e.target.value })}
                               className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
+                              rows={3}
+                              required
                             />
                           </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Label htmlFor="description" className="text-gray-700 dark:text-gray-300">
-                            Description
-                          </Label>
-                          <Textarea
-                            id="description"
-                            placeholder="Describe your item in detail..."
-                            className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
-                          />
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="space-y-2">
+                              <Label htmlFor="condition" className="text-gray-700 dark:text-gray-300">
+                                Condition *
+                              </Label>
+                              <Select
+                                value={newItemData.condition}
+                                onValueChange={(value) => setNewItemData({ ...newItemData, condition: value })}
+                              >
+                                <SelectTrigger className="bg-white dark:bg-gray-700">
+                                  <SelectValue placeholder="Select condition" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  <SelectItem value="Brand New">Brand New</SelectItem>
+                                  <SelectItem value="Like New">Like New</SelectItem>
+                                  <SelectItem value="Excellent">Excellent</SelectItem>
+                                  <SelectItem value="Good">Good</SelectItem>
+                                  <SelectItem value="Fair">Fair</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="state" className="text-gray-700 dark:text-gray-300">
+                                State *
+                              </Label>
+                              <Select
+                                value={newItemData.state}
+                                onValueChange={(value) => setNewItemData({ ...newItemData, state: value })}
+                              >
+                                <SelectTrigger className="bg-white dark:bg-gray-700">
+                                  <SelectValue placeholder="Select state" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                  {NIGERIAN_STATES.map((state) => (
+                                    <SelectItem key={state} value={state}>
+                                      {state}
+                                    </SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="value" className="text-gray-700 dark:text-gray-300">
+                                Estimated Value
+                              </Label>
+                              <Input
+                                id="value"
+                                placeholder="e.g., ₦500,000"
+                                value={newItemData.estimatedValue}
+                                onChange={(e) => setNewItemData({ ...newItemData, estimatedValue: e.target.value })}
+                                className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
+                              />
+                            </div>
+                          </div>
                           <div className="space-y-2">
                             <Label htmlFor="location" className="text-gray-700 dark:text-gray-300">
-                              Location
+                              Specific Location *
                             </Label>
                             <Input
                               id="location"
-                              placeholder="e.g., Ikeja, Lagos"
+                              placeholder="e.g., Victoria Island, Lagos"
+                              value={newItemData.location}
+                              onChange={(e) => setNewItemData({ ...newItemData, location: e.target.value })}
                               className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
+                              required
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="value" className="text-gray-700 dark:text-gray-300">
-                              Estimated Value
-                            </Label>
-                            <Input
-                              id="value"
-                              placeholder="e.g., ₦5,000"
-                              className="bg-white dark:bg-gray-700 border-emerald-200 dark:border-gray-600"
-                            />
+                            <Label className="text-gray-700 dark:text-gray-300">Photos *</Label>
+                            <div className="border-2 border-dashed border-emerald-200 dark:border-gray-600 rounded-lg p-8 text-center hover:border-emerald-400 transition-colors duration-200">
+                              <Camera className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                              <p className="text-gray-600 dark:text-gray-300">
+                                Click to upload photos or drag and drop
+                              </p>
+                              <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">PNG, JPG up to 10MB each</p>
+                            </div>
                           </div>
-                        </div>
-                        <div className="space-y-2">
-                          <Label className="text-gray-700 dark:text-gray-300">Photos</Label>
-                          <div className="border-2 border-dashed border-emerald-200 dark:border-gray-600 rounded-lg p-8 text-center hover:border-emerald-400 transition-colors duration-200">
-                            <Camera className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-                            <p className="text-gray-600 dark:text-gray-300">Click to upload photos or drag and drop</p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">PNG, JPG up to 10MB</p>
+                          <div className="flex gap-2">
+                            <Button type="submit" className="bg-emerald-600 hover:bg-emerald-700 text-white flex-1">
+                              <Upload className="h-4 w-4 mr-2" />
+                              Post Item
+                            </Button>
+                            <Button
+                              type="button"
+                              variant="outline"
+                              onClick={() => setShowAddItem(false)}
+                              className="bg-white text-emerald-600 border-emerald-200 hover:bg-emerald-50 dark:bg-gray-800 dark:text-emerald-400 dark:border-emerald-700 dark:hover:bg-emerald-900"
+                            >
+                              Cancel
+                            </Button>
                           </div>
-                        </div>
-                        <div className="flex gap-2">
-                          <Button className="bg-emerald-600 hover:bg-emerald-700 text-white flex-1">
-                            <Upload className="h-4 w-4 mr-2" />
-                            Post Item
-                          </Button>
-                          <Button
-                            variant="outline"
-                            onClick={() => setShowAddItem(false)}
-                            className="bg-white text-emerald-600 border-emerald-200 hover:bg-emerald-50 dark:bg-gray-800 dark:text-emerald-400 dark:border-emerald-700 dark:hover:bg-emerald-900"
-                          >
-                            Cancel
-                          </Button>
-                        </div>
+                        </form>
                       </CardContent>
                     </Card>
                   </motion.div>
@@ -386,7 +607,7 @@ export default function Dashboard() {
               </AnimatePresence>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {myItems.map((item, index) => (
+                {realMyItems.map((item, index) => (
                   <motion.div
                     key={item.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -408,7 +629,9 @@ export default function Dashboard() {
                               className={`${
                                 item.status === "Active"
                                   ? "bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200"
-                                  : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
+                                  : item.status === "Matched"
+                                    ? "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+                                    : "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200"
                               }`}
                             >
                               {item.status}
@@ -427,15 +650,34 @@ export default function Dashboard() {
                             <MapPin className="h-4 w-4 mr-1" />
                             {item.location}
                           </div>
-                          <div className="flex items-center justify-between text-sm">
+                          <div className="flex items-center justify-between text-sm mb-4">
                             <div className="flex items-center gap-4">
-                              <span className="text-gray-600 dark:text-gray-300">👁️ {item.views} views</span>
-                              <span className="text-emerald-600 dark:text-emerald-400">
-                                ❤️ {item.interested} interested
+                              <span className="text-gray-600 dark:text-gray-300 flex items-center">
+                                <Eye className="h-4 w-4 mr-1" />
+                                {item.views} views
+                              </span>
+                              <span className="text-emerald-600 dark:text-emerald-400 flex items-center">
+                                <Heart className="h-4 w-4 mr-1" />
+                                {item.interested} interested
                               </span>
                             </div>
-                            <Button size="sm" variant="outline" className="hover:scale-105 transition-all duration-200">
+                            <span className="text-xs text-gray-500">{item.datePosted}</span>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="flex-1 hover:scale-105 transition-all duration-200"
+                            >
+                              <Edit className="h-3 w-3 mr-1" />
                               Edit
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              className="text-red-600 hover:bg-red-50 hover:scale-105 transition-all duration-200"
+                            >
+                              <Trash2 className="h-3 w-3" />
                             </Button>
                           </div>
                         </div>
@@ -468,7 +710,7 @@ export default function Dashboard() {
               </div>
 
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {matches.map((match, index) => (
+                {realMatches.map((match, index) => (
                   <motion.div
                     key={match.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -514,6 +756,9 @@ export default function Dashboard() {
                               <span className="text-xs">{match.lastSeen}</span>
                             </div>
                             <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{match.responseTime}</p>
+                            <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-1 font-medium">
+                              Interested in: {match.interestedIn}
+                            </p>
                           </div>
                           <Button
                             className="w-full bg-emerald-600 hover:bg-emerald-700 text-white hover:scale-105 transition-all duration-200"
@@ -580,20 +825,31 @@ export default function Dashboard() {
                           className={`flex ${message.isMe ? "justify-end" : "justify-start"}`}
                         >
                           <div
-                            className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
-                              message.isMe
-                                ? "bg-emerald-600 text-white"
-                                : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
-                            }`}
+                            className={`flex items-end space-x-2 max-w-xs lg:max-w-md ${message.isMe ? "flex-row-reverse space-x-reverse" : ""}`}
                           >
-                            <p className="text-sm">{message.message}</p>
-                            <p
-                              className={`text-xs mt-1 ${
-                                message.isMe ? "text-emerald-100" : "text-gray-500 dark:text-gray-400"
+                            {!message.isMe && (
+                              <div className="w-6 h-6 rounded-full bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center">
+                                <span className="text-xs text-emerald-600 dark:text-emerald-400 font-semibold">
+                                  {message.sender.charAt(0)}
+                                </span>
+                              </div>
+                            )}
+                            <div
+                              className={`px-4 py-2 rounded-lg ${
+                                message.isMe
+                                  ? "bg-emerald-600 text-white"
+                                  : "bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-white"
                               }`}
                             >
-                              {message.time}
-                            </p>
+                              <p className="text-sm">{message.message}</p>
+                              <p
+                                className={`text-xs mt-1 ${
+                                  message.isMe ? "text-emerald-100" : "text-gray-500 dark:text-gray-400"
+                                }`}
+                              >
+                                {message.time}
+                              </p>
+                            </div>
                           </div>
                         </motion.div>
                       ))}
@@ -608,12 +864,11 @@ export default function Dashboard() {
                         className="flex-1 bg-white dark:bg-gray-700"
                         onKeyPress={(e) => {
                           if (e.key === "Enter") {
-                            // Handle send message
-                            setNewMessage("")
+                            handleSendMessage()
                           }
                         }}
                       />
-                      <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
+                      <Button className="bg-emerald-600 hover:bg-emerald-700 text-white" onClick={handleSendMessage}>
                         <Send className="h-4 w-4" />
                       </Button>
                     </div>
@@ -650,7 +905,7 @@ export default function Dashboard() {
             >
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">My Trades</h2>
               <div className="space-y-4">
-                {trades.map((trade, index) => (
+                {realTrades.map((trade, index) => (
                   <motion.div
                     key={trade.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -692,6 +947,11 @@ export default function Dashboard() {
                                   <AlertCircle className="h-4 w-4 mr-2" />
                                   Next: {trade.nextStep}
                                 </p>
+                              </div>
+                            )}
+                            {trade.feedback && (
+                              <div className="mt-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                                <p className="text-sm text-gray-700 dark:text-gray-300 italic">"{trade.feedback}"</p>
                               </div>
                             )}
                           </div>
