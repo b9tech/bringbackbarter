@@ -39,7 +39,7 @@ import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { NIGERIAN_STATES, PRODUCT_CATEGORIES } from "@/lib/constants"
 
-// Real Nigerian products for the dashboard
+// Real Nigerian products for the dashboard (limited to Lagos, Ibadan, Abeokuta)
 const realMyItems = [
   {
     id: 1,
@@ -65,7 +65,7 @@ const realMyItems = [
     category: "Electronics & Gadgets",
     subcategory: "Laptops",
     condition: "Like New",
-    location: "Lekki, Lagos",
+    location: "Bodija, Ibadan",
     image: "/images/items/macbook-pro-m1.jpg",
     status: "Matched",
     value: "₦950,000",
@@ -97,7 +97,7 @@ const realMyItems = [
     category: "Electronics & Gadgets",
     subcategory: "Gaming Consoles",
     condition: "Like New",
-    location: "Surulere, Lagos",
+    location: "Onikolobo, Abeokuta",
     image: "/images/ps5-console.jpg",
     status: "Active",
     value: "₦450,000",
@@ -113,7 +113,7 @@ const realMyItems = [
     category: "Fashion & Accessories",
     subcategory: "Bags & Purses",
     condition: "Like New",
-    location: "Ikoyi, Lagos",
+    location: "Mokola, Ibadan",
     image: "/images/designer-bags.jpg",
     status: "Pending",
     value: "₦380,000",
@@ -129,7 +129,7 @@ const realMyItems = [
     category: "Electronics & Gadgets",
     subcategory: "Smart Watches",
     condition: "Excellent",
-    location: "Victoria Island, Lagos",
+    location: "Ibara, Abeokuta",
     image: "/images/items/apple-watch.jpg",
     status: "Active",
     value: "₦180,000",
@@ -137,63 +137,9 @@ const realMyItems = [
     interested: 4,
     datePosted: "4 days ago",
   },
-]
+];
 
-const realMatches = [
-  {
-    id: 1,
-    title: "Samsung Galaxy S23 Ultra 256GB",
-    description:
-      "Brand new Samsung Galaxy S23 Ultra in Phantom Black. Looking for iPhone 13 Pro or similar Apple device.",
-    user: "Ahmed Musa",
-    location: "Garki, Abuja",
-    image: "/images/items/samsung-galaxy-s23.jpg",
-    compatibility: 95,
-    userRating: 4.8,
-    lastSeen: "2 hours ago",
-    responseTime: "Usually responds in 30 mins",
-    interestedIn: "iPhone 13 Pro",
-  },
-  {
-    id: 2,
-    title: "Dell XPS 13 Laptop + Accessories",
-    description: "Dell XPS 13 with Intel i7, 16GB RAM, 512GB SSD. Looking for MacBook Pro for my design work.",
-    user: "Chioma Okwu",
-    location: "Enugu, Enugu",
-    image: "/images/items/dell-xps-laptop.jpg",
-    compatibility: 88,
-    userRating: 4.9,
-    lastSeen: "1 hour ago",
-    responseTime: "Usually responds in 1 hour",
-    interestedIn: "MacBook Pro M1",
-  },
-  {
-    id: 3,
-    title: "Professional Photography Equipment",
-    description: "Nikon D850 with multiple lenses and accessories. Interested in Canon equipment for brand switch.",
-    user: "Ibrahim Sani",
-    location: "Kaduna, Kaduna",
-    image: "/images/items/nikon-camera.jpg",
-    compatibility: 92,
-    userRating: 4.7,
-    lastSeen: "30 mins ago",
-    responseTime: "Usually responds in 15 mins",
-    interestedIn: "Canon EOS R6",
-  },
-  {
-    id: 4,
-    title: "Xbox Series X + Game Pass",
-    description: "Xbox Series X with Game Pass Ultimate and 5 games. Looking for PlayStation 5 to switch ecosystems.",
-    user: "Victor Eze",
-    location: "Port Harcourt, Rivers",
-    image: "/images/items/xbox-series-x.jpg",
-    compatibility: 89,
-    userRating: 4.6,
-    lastSeen: "45 mins ago",
-    responseTime: "Usually responds in 2 hours",
-    interestedIn: "PlayStation 5",
-  },
-]
+const realMatches = [];
 
 const realTrades = [
   {
@@ -215,8 +161,8 @@ const realTrades = [
     status: "In Progress",
     date: "Today",
     rating: null,
-    location: "Lekki, Lagos",
-    nextStep: "Meet at Lekki Phase 1 tomorrow at 3 PM",
+    location: "Bodija, Ibadan",
+    nextStep: "Meet at Cocoa Mall tomorrow at 3 PM",
   },
   {
     id: 3,
@@ -226,7 +172,7 @@ const realTrades = [
     status: "Pending",
     date: "2 hours ago",
     rating: null,
-    location: "Ikeja, Lagos",
+    location: "Ibara, Abeokuta",
     nextStep: "Waiting for partner confirmation",
   },
   {
@@ -237,10 +183,57 @@ const realTrades = [
     status: "Completed",
     date: "1 week ago",
     rating: 4,
-    location: "Surulere, Lagos",
+    location: "Onikolobo, Abeokuta",
     feedback: "Good trade overall. Items were as described but delivery was slightly delayed.",
   },
-]
+];
+
+const realTrades = [
+  {
+    id: 1,
+    item: "iPhone 12 Pro 256GB",
+    partner: "Adunni Okafor",
+    partnerItem: "Samsung Galaxy S22 Ultra + ₦50k",
+    status: "Completed",
+    date: "3 days ago",
+    rating: 5,
+    location: "Victoria Island, Lagos", // Already valid
+    feedback: "Smooth transaction! Phone was exactly as described. Highly recommended trader!",
+  },
+  {
+    id: 2,
+    item: "MacBook Air M1",
+    partner: "Emeka Nwankwo",
+    partnerItem: "Gaming Setup (Monitor + Accessories)",
+    status: "In Progress",
+    date: "Today",
+    rating: null,
+    location: "Mokola, Ibadan", // Changed from Lekki, Lagos
+    nextStep: "Meet at Lekki Phase 1 tomorrow at 3 PM",
+  },
+  {
+    id: 3,
+    item: "Canon DSLR Camera",
+    partner: "Fatima Aliyu",
+    partnerItem: "iPad Pro + Apple Pencil",
+    status: "Pending",
+    date: "2 hours ago",
+    rating: null,
+    location: "Ibara, Abeokuta", // Changed from Ikeja, Lagos
+    nextStep: "Waiting for partner confirmation",
+  },
+  {
+    id: 4,
+    item: "Designer Watch Collection",
+    partner: "Bola Adeyemi",
+    partnerItem: "Professional Camera Equipment",
+    status: "Completed",
+    date: "1 week ago",
+    rating: 4,
+    location: "Surulere, Lagos", // Already valid
+    feedback: "Good trade overall. Items were as described but delivery was slightly delayed.",
+  },
+];
 
 const chatMessages = [
   {
@@ -281,7 +274,7 @@ const chatMessages = [
     isMe: false,
     avatar: "/placeholder-user.jpg",
   },
-]
+];
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("items")

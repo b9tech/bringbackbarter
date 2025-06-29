@@ -12,7 +12,7 @@ import { motion } from "framer-motion"
 
 const teamMembers = [
   {
-    name: "Enoch Adebayo",
+    name: "Enoch Oluwumi",
     role: "Founder & CEO",
     description: "Visionary leader passionate about bringing back the ancient art of bartering to modern Nigeria.",
     image: "/placeholder-user.jpg",
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 </p>
                 <div className="mt-6">
                   <Badge className="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-300">
-                    "Barter is back — & better!" 🌍
+                    "Barter is Back — & Better!" 🌍
                   </Badge>
                 </div>
               </CardContent>
