@@ -1591,7 +1591,7 @@ export default function HomePage() {
           >
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <p className="text-gray-500 text-center md:text-left">
-                &copy; 2024 B3 - BringBackBarter. Made with ❤️ for Nigeria. 🇳🇬
+                &copy; 2025 B3 - BringBackBarter. Made with ❤️ for Nigeria. 🇳🇬
               </p>
               <div className="flex items-center space-x-3">
                 <span className="text-gray-500 text-sm">Built by</span>
