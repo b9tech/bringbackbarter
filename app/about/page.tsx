@@ -130,6 +130,22 @@ export default function AboutPage() {
         </div>
       </motion.header>
 
+      <main className="flex flex-col items-center justify-center px-4">
+        <div className="max-w-3xl text-center space-y-6">
+          <h1 className="text-5xl font-extrabold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent">
+            About B3
+          </h1>
+          <p className="text-lg text-gray-700 dark:text-gray-300">
+            B3 – BringBackBarter – is a community-driven marketplace focused on product-for-product exchanges. We help
+            Nigerians swap durable goods safely, quickly, and fairly – no cash required.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400">
+            #BringBackBarter is powered by Nigerian traders, verified products, and a trust-score system that keeps
+            every deal legit. Join the movement!
+          </p>
+        </div>
+      </main>
+
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
@@ -335,7 +351,7 @@ export default function AboutPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 text-lg font-bold"
+                    className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 text-lg font-bold bg-transparent"
                   >
                     <Users className="h-5 w-5 mr-2" />
                     Join Community

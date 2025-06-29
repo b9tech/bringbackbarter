@@ -137,9 +137,9 @@ const realMyItems = [
     interested: 4,
     datePosted: "4 days ago",
   },
-];
+]
 
-const realMatches = [];
+const realMatches = []
 
 const realTrades = [
   {
@@ -161,8 +161,8 @@ const realTrades = [
     status: "In Progress",
     date: "Today",
     rating: null,
-    location: "Bodija, Ibadan",
-    nextStep: "Meet at Cocoa Mall tomorrow at 3 PM",
+    location: "Mokola, Ibadan",
+    nextStep: "Meet at Lekki Phase 1 tomorrow at 3 PM",
   },
   {
     id: 3,
@@ -183,57 +183,10 @@ const realTrades = [
     status: "Completed",
     date: "1 week ago",
     rating: 4,
-    location: "Onikolobo, Abeokuta",
+    location: "Surulere, Lagos",
     feedback: "Good trade overall. Items were as described but delivery was slightly delayed.",
   },
-];
-
-const realTrades = [
-  {
-    id: 1,
-    item: "iPhone 12 Pro 256GB",
-    partner: "Adunni Okafor",
-    partnerItem: "Samsung Galaxy S22 Ultra + ₦50k",
-    status: "Completed",
-    date: "3 days ago",
-    rating: 5,
-    location: "Victoria Island, Lagos", // Already valid
-    feedback: "Smooth transaction! Phone was exactly as described. Highly recommended trader!",
-  },
-  {
-    id: 2,
-    item: "MacBook Air M1",
-    partner: "Emeka Nwankwo",
-    partnerItem: "Gaming Setup (Monitor + Accessories)",
-    status: "In Progress",
-    date: "Today",
-    rating: null,
-    location: "Mokola, Ibadan", // Changed from Lekki, Lagos
-    nextStep: "Meet at Lekki Phase 1 tomorrow at 3 PM",
-  },
-  {
-    id: 3,
-    item: "Canon DSLR Camera",
-    partner: "Fatima Aliyu",
-    partnerItem: "iPad Pro + Apple Pencil",
-    status: "Pending",
-    date: "2 hours ago",
-    rating: null,
-    location: "Ibara, Abeokuta", // Changed from Ikeja, Lagos
-    nextStep: "Waiting for partner confirmation",
-  },
-  {
-    id: 4,
-    item: "Designer Watch Collection",
-    partner: "Bola Adeyemi",
-    partnerItem: "Professional Camera Equipment",
-    status: "Completed",
-    date: "1 week ago",
-    rating: 4,
-    location: "Surulere, Lagos", // Already valid
-    feedback: "Good trade overall. Items were as described but delivery was slightly delayed.",
-  },
-];
+]
 
 const chatMessages = [
   {
@@ -274,7 +227,7 @@ const chatMessages = [
     isMe: false,
     avatar: "/placeholder-user.jpg",
   },
-];
+]
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = useState("items")
@@ -660,7 +613,7 @@ export default function Dashboard() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="flex-1 hover:scale-105 transition-all duration-200"
+                              className="flex-1 hover:scale-105 transition-all duration-200 bg-transparent"
                             >
                               <Edit className="h-3 w-3 mr-1" />
                               Edit
@@ -668,7 +621,7 @@ export default function Dashboard() {
                             <Button
                               size="sm"
                               variant="outline"
-                              className="text-red-600 hover:bg-red-50 hover:scale-105 transition-all duration-200"
+                              className="text-red-600 hover:bg-red-50 hover:scale-105 transition-all duration-200 bg-transparent"
                             >
                               <Trash2 className="h-3 w-3" />
                             </Button>

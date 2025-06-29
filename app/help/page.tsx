@@ -319,6 +319,22 @@ export default function HelpPage() {
           </div>
         </motion.div>
 
+        {/* Additional FAQs */}
+        <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} className="mb-16">
+          <h2 className="text-xl font-semibold mb-2">Additional FAQs</h2>
+          <ul className="space-y-4 text-gray-700 dark:text-gray-300">
+            <li>
+              <strong>How do I list an item?</strong> – Open your dashboard &nbsp;→ “My Items” → “Add Item”.
+            </li>
+            <li>
+              <strong>Are consumables allowed?</strong> – No. B3 only supports durable goods.
+            </li>
+            <li>
+              <strong>How is safety handled?</strong> – Meet in public places, check user verification & trust-scores.
+            </li>
+          </ul>
+        </motion.div>
+
         {/* Still Need Help */}
         <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} className="text-center">
           <Card className="backdrop-blur-xl bg-gradient-to-r from-green-600 via-emerald-500 to-green-500 border-0 text-white shadow-3xl overflow-hidden relative rounded-3xl">
@@ -341,7 +357,7 @@ export default function HelpPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 text-lg font-bold"
+                    className="border-2 border-white text-white hover:bg-white hover:text-green-600 px-8 py-3 text-lg font-bold bg-transparent"
                   >
                     <Package className="h-5 w-5 mr-2" />
                     Start Bartering
