@@ -1599,15 +1599,13 @@ export default function HomePage() {
                   <div className="relative w-5 h-5">
                     <Image src="/images/b9-logo.png" alt="B9Tech Logo" fill className="object-contain" />
                   </div>
-                  <a
-                    href="https://b9techafrica.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-400 font-medium hover:text-white underline"
-                  >
-                    B9TECH CONSULTS
-                  </a>
+                  <span className="text-gray-400 font-medium">B9Tech Consult</span>
                 </div>
               </div>
             </div>
           </motion.div>
+        </div>
+      </footer>
+    </div>
+  )
+}
