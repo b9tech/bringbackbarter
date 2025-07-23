@@ -38,8 +38,8 @@ export default function AuthPage() {
     e.preventDefault()
     // Handle form submission
     console.log("Form submitted:", formData)
-    // Redirect to dashboard
-    window.location.href = "/dashboard"
+    // Redirect to new onboarding flow
+    window.location.href = "/onboarding"
   }
 
   if (!mounted) {

@@ -428,15 +428,16 @@ export default function HomePage() {
                   </Button>
                 </motion.div>
               </Link>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white shadow-lg shadow-emerald-200 dark:shadow-emerald-900/50"
-                  onClick={() => setShowWaitlistForm(true)}
-                >
-                  Join the Movement
-                  <Sparkles className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
+              <Link href="/onboarding">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    className="bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white shadow-lg shadow-emerald-200 dark:shadow-emerald-900/50"
+                  >
+                    Join the Movement
+                    <Sparkles className="ml-2 h-4 w-4" />
+                  </Button>
+                </motion.div>
+              </Link>
             </nav>
 
             {/* Theme Toggle & Mobile Menu */}

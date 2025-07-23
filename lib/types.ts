@@ -1,3 +1,35 @@
+// Onboarding and Authentication Types
+export type AccountType = 'individual' | 'merchant' | 'agent'
+export type KYCTier = 'tier0' | 'tier1' | 'tier2'
+export type VerificationStatus = 'pending' | 'verified' | 'rejected'
+
+export interface OnboardingStep {
+  id: string
+  title: string
+  description: string
+  isCompleted: boolean
+  isActive: boolean
+}
+
+export interface OnboardingState {
+  currentStep: number
+  totalSteps: number
+  steps: OnboardingStep[]
+  userData: Partial<User>
+  accountType?: AccountType
+  kycTier: KYCTier
+}
+
+export interface KYCDocument {
+  id: string
+  type: 'id_card' | 'passport' | 'drivers_license' | 'utility_bill' | 'bank_statement'
+  url: string
+  status: VerificationStatus
+  uploaded_at: string
+  verified_at?: string
+  rejection_reason?: string
+}
+
 export interface User {
   id: string
   email: string
@@ -14,6 +46,17 @@ export interface User {
   successful_trades: number
   created_at: string
   updated_at: string
+
+  // Enhanced fields for new onboarding
+  account_type: AccountType
+  kyc_tier: KYCTier
+  email_verified: boolean
+  phone_verified: boolean
+  kyc_documents?: KYCDocument[]
+  referral_code?: string
+  referred_by?: string
+  onboarding_completed: boolean
+  last_login?: string
 }
 
 export interface Item {
